@@ -241,7 +241,7 @@
     <script>
         $(function() {
             $.getJSON("../php/get-reviews.php", (data) => {
-                if (data) {
+                if (data.length != 0) {
                     $reviews = [];
                     for ($i = 2; $i <= data.length; $i = $i + 4) {
                         $reviews.push(data.slice($i - 2, $i + 2))
@@ -291,7 +291,7 @@
                 <img src="images/next.png" alt="next" class="w-25">
                 </a></div>`);
                 } else {
-                    $('#carouselReviews').append('<h3>No reviews</h3>');
+                    $('#carouselReviews').append('<h3 style="margin: 0 10%;">No reviews available yet</h3>');
                 }
 
             });
