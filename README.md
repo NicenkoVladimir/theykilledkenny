@@ -2,7 +2,7 @@
 They Killed Kenny | Production
 
 
-Create all tables: 
-http://theykilledkenny/php/tb_create
-
-Settings: ./php/config.php
+1. Создать БД и таблицы по ссылке. 
+2. Логин и пароль админа: 
+3. login: admin@theykilledkenny.com 
+4. pass: root
