@@ -1,0 +1,88 @@
+ @media only screen {
+     .box4 h1 {
+         font-size: 5em;
+         max-width: 2200px;
+     }
+ }
+ 
+ @media only screen and (max-width: 1750px) {
+     .box4 h1 {
+         font-size: 4.5em;
+         max-width: 1600px;
+     }
+     .menu a {
+         font-size: 1.8em;
+     }
+ }
+ 
+ @media only screen and (max-width: 1600px) {
+     .box4 h1 {
+         font-size: 4em;
+         max-width: 1600px;
+     }
+     .menu a {
+         font-size: 1.6em;
+     }
+ }
+ 
+ @media only screen and (max-width: 1500px) {
+     .box4 h1 {
+         font-size: 3.7em;
+         max-width: 1500px;
+     }
+     .menu a {
+         font-size: 1.4em;
+     }
+ }
+ 
+ @media only screen and (max-width: 1350px) {
+     .box4 h1 {
+         font-size: 3.3em;
+         max-width: 1350px;
+     }
+     .menu a {
+         font-size: 1.2em;
+     }
+ }
+ 
+ @media only screen and (max-width: 1250px) {
+     .box4 h1 {
+         font-size: 3em;
+         max-width: 1250px;
+     }
+     .menu a {
+         font-size: 1.0em;
+     }
+ }
+
+
+ @media only screen and (max-width: 1050px) {
+    .box4 h1 {
+        font-size: 2.7em;
+        max-width: 1050px;
+    }
+    .menu a {
+        font-size: 0.8em;
+    }
+}
+
+
+@media only screen and (max-width: 950px) {
+    .box4 h1 {
+        font-size: 2.4em;
+        max-width: 950px;
+    }
+    .menu a {
+        font-size: 0.7em;
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    .box4 h1 {
+        font-size: 2.0em;
+        max-width: 850px;
+    }
+    .menu a {
+        font-size: 0.5em;
+    }
+}
