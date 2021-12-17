@@ -2,7 +2,6 @@
     <link rel="stylesheet" href="../styles/style.css">
     <script>
         function changeButtonSize(item) {
-
             if (item.style.width == '100%') {
                 item.style.width = '50%';
             } else {
@@ -103,11 +102,7 @@
             text-align: center;
         }
 
-        .h1_page {
-            margin: 0 10%;
-            margin-bottom: 20px;
-            border-bottom: 1px solid black;
-        }
+
 
         .card-body {
             background-color: rgb(240, 225, 90);
@@ -134,6 +129,11 @@
 
         .offers div:first-child {
             margin-bottom: 15px;
+        }
+
+        .h1_title {
+            margin: 0 10% !important;
+            border-bottom: 1px solid black !important;
         }
     </style>
 </head>
@@ -179,8 +179,8 @@
         </a>
     </div>
 
-    <h1 class="h1_page mb-4">What can we offer</h1>
-    <div class="offers">
+    <h1 class="h1_title mb-4">What can we offer</h1>
+    <div class="offers mt-4">
         <p>
             <button title="click to learn more" class="btn" type="button" data-toggle="collapse" data-target="#number_1" aria-expanded="false" aria-controls="collapseExample" onclick="changeButtonSize(this)">
                 &#10026; South park characters drawings
@@ -225,7 +225,7 @@
         <a href="?page=how-it-works" class="border border-dark">LEARN MORE</a>
     </div>
 
-    <h1 class="h1_page mt-5">Customer's reviews</h1>
+    <h1 class="h1_title mt-5 mb-4">Customer's reviews</h1>
 
 
     <div id="carouselReviews" class="carousel slide" data-ride="carousel" data-interval="10000">
@@ -241,7 +241,8 @@
     <script>
         $(function() {
             $.getJSON("../php/get-reviews.php", (data) => {
-                if (data.length != 0) {
+                console.log(data.length);
+                if (data.length > 1) {
                     $reviews = [];
                     for ($i = 2; $i <= data.length; $i = $i + 4) {
                         $reviews.push(data.slice($i - 2, $i + 2))
@@ -279,9 +280,9 @@
                         });
                     });
                     $($('#carouselReviews').find('.carousel-item')[0]).addClass('active');
-                    $('#carouselReviews').append(`
+                    if (data.length > 2) {
+                        $('#carouselReviews').append(`
                 <a class="carousel-control-prev" href="#carouselReviews" role="button" data-slide="prev">
-
                 <span class="sr-only">Previous</span>
                 <img src="images/previous.png" alt="next" class="w-25">
                 </a>
@@ -290,6 +291,8 @@
                 <span class="sr-only">Next</span>
                 <img src="images/next.png" alt="next" class="w-25">
                 </a></div>`);
+                    }
+
                 } else {
                     $('#carouselReviews').append('<h3 style="margin: 0 10%;">No reviews available yet</h3>');
                 }

@@ -56,7 +56,7 @@ Conformation link for activation your account has been sent to <b>' . $email . '
         <div class="form-group row">
             <div class="col-md-6">
                 <label>Personal email <span class="small text-danger">(required)</span></label>
-                <input type="email" name="email" class="form-control form-control-lg" placeholder="adress@email.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                <input type="email" name="email" class="form-control form-control-lg" placeholder="john.smith@gmail.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
             </div>
         </div>
         <div class="form-group row">
@@ -68,11 +68,11 @@ Conformation link for activation your account has been sent to <b>' . $email . '
         <div class=" form-group row">
             <div class="col-md-6">
                 <label>Password <span class="small text-danger">(from 6 to 20 characters)</span> </label>
-                <input type="password" name="password" class="form-control form-control-lg">
+                <input type="password" name="password" class="form-control form-control-lg" required>
             </div>
             <div class="col-md-6">
                 <label>Confirm password <span class="small text-danger">(must fit your password)</span></label>
-                <input type="password" name="confirm_password" class="form-control form-control-lg">
+                <input type="password" name="confirm_password" class="form-control form-control-lg" required>
             </div>
         </div>
         <div class="form-group row">

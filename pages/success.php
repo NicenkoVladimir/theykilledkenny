@@ -9,15 +9,16 @@ if (isset($_SESSION['success_message']) && !empty($_SESSION['success_message']))
 ?>
 
 <style>
-    .card-body {
+    .card-header {
         background-color: black;
         color: rgb(240, 225, 90);
-        font-size: 1.2em;
+
     }
 
-    .card-header {
+    .card-body {
         background-color: rgb(240, 225, 90);
         color: black;
+        font-size: 1.2em;
     }
 </style>
 <center>
@@ -28,7 +29,7 @@ if (isset($_SESSION['success_message']) && !empty($_SESSION['success_message']))
                 Redirecting to home page ...
 
             </p>
-            <a href="?page=home" class="btn btn-outline-warning">Home page</a>
+            <a href="?page=home" class="btn btn-outline-dark">Home page</a>
         </div>
     </div>
 </center>

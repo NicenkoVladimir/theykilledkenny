@@ -109,7 +109,7 @@ require_once 'php/config.php';
                         <a href="?page=logout" class="btn btn-link">Logout</a></b>
                        </div> ';
             }
-            // facebook log in
+            // facebook log in IN DEVELOPMENT -- not working yet
             elseif (!empty($_SESSION['FBID'])) {
                 $email = $_SESSION['EMAIL'];
                 $full_name = $_SESSION['FULLNAME'];
@@ -129,7 +129,7 @@ require_once 'php/config.php';
             }
             ?>
 
-            <input class="search" type="text" placeholder="Search here" name="siteSearch" onkeydown="getSearch(this, '<?php echo $site_name ?>')">
+            <input class="search" type="text" placeholder="Search here" name="siteSearch" onkeydown="getSearch(this, '<?php echo $site_name; ?>')">
 
         </div>
     </div>
@@ -165,7 +165,7 @@ require_once 'php/config.php';
                 <li class="list-inline-item"><a href="?page=how-it-works">How it Works</a></li>
                 <li class="list-inline-item"><a href="?page=about-us">About us</a></li>
                 <li class="list-inline-item"><a href="?page=policy-and-rules">Policy and rules</a></li>
-                <li class="list-inline-item"><a href="?page=contact-us">Contact us</a></li>
+                <li class="list-inline-item"><a href="?page=contact-form">Contact us</a></li>
             </ul>
             <p class="copyright">They Killed Kenny | Production © 2021</p>
         </footer>

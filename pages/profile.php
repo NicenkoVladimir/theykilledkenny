@@ -1,9 +1,8 @@
 <script>
-    $(function() {
-                $('.current_image').click(function() {
-                    $('.new_image_box').toggle();
-                });
-            }
+    function uploadImage() {
+        const params = "width=400,height=400, left=300, top=300, resizable=no";
+        var newWin = window.open('php/upload-form.php', 'Upload photo', params);
+    }
 </script>
 
 
@@ -24,8 +23,8 @@ if (isset($_SESSION['active'])) {
 }
 $email = $_SESSION['email'];
 $user_id = $_SESSION['id'];
-$result = mysqli_query($link, "SELECT *, statuses.status as status FROM users 
- LEFT JOIN statuses ON statuses.id = users.status_id WHERE email='$email'")
+$result = mysqli_query($link, "SELECT *, users_statuses.status as status FROM users 
+ LEFT JOIN users_statuses ON users_statuses.id = users.status_id WHERE email='$email'")
     or die(mysqli_error($link));
 $user = mysqli_fetch_assoc($result);
 
@@ -44,8 +43,12 @@ if (isset($_SESSION['logged_in'])) {
         <div class="btn-group" style="margin-bottom:20px">
             <?php if ($_SESSION['status'] == 1) {
             ?>
-                <a href="?page=users-list" class="btn btn-link">Registered users</a>
+                <a href="?page=users-list" class="btn btn-link">All registered users</a>
                 <a href="?page=users-reviews" class="btn btn-link">Users reviews</a>
+                <a href="?page=users-messages" class="btn btn-link">Contact requests</a>
+                <a href="?page=users-orders" class="btn btn-link">Orders tracking</a>
+                <a href="?page=financial-history" class="btn btn-link">Financial history</a>
+                <a href="?page=products-menu" class="btn btn-link">Products menu</a>
                 <a href="?page=profile-info" class="btn btn-link">My profile</a>
                 <a href="php/tb_create/delete_db.php" class="btn btn-link">Remove website DB (temporary)</a>
 
@@ -56,10 +59,11 @@ if (isset($_SESSION['logged_in'])) {
                     <button type="submit" name="shopping-cart" class="btn btn-link">Shopping cart</button>
                     <button type="submit" name="shopping-history" class="btn btn-link">Shopping history</button>
                     <button type="submit" name="payment-info" class="btn btn-link">Payment info</button>
+                    <a href="/?page=contact-form" class="btn btn-link">Contact us</a>
                 </form>
                 <form action="/?page=profile-info" method="post">
                     <input type="hidden" name="user_id" value="<?php echo $user['id'] ?>">
-                    <button type="submit" class="btn btn-link">Profile info / update</button>
+                    <button type="submit" class="btn btn-link">Update profile</button>
                 </form>
                 <form action="/?page=delete-profile" method="post">
                     <input type="hidden" name="user_id" value="<?php echo $user['id'] ?>">
@@ -67,7 +71,9 @@ if (isset($_SESSION['logged_in'])) {
                 </form>
             <?php } else {
             ?>
-                <button type="submit" name="payment-info" class="btn btn-link">Available orders</button>
+                <a href="?page=users-orders" class="btn btn-link">Go to WorkMarket</a>
+                <a href="?page=profile-info" class="btn btn-link">My profile</a>
+
 
             <?php }
 
@@ -78,7 +84,7 @@ if (isset($_SESSION['logged_in'])) {
         <div class="container-fluid" style="width:50%">
             <div class="row">
                 <div class="col-4">
-                    <a href='' onclick="window.open('url', name, params)">
+                    <a href='' onclick="uploadImage()" title="Click to change photo">
                         <img src="<?php echo $user['photo'] ?>" alt="<?php echo $user['name'] ?>" class="img-thumbnail rounded-circle">
                     </a>
                 </div>
@@ -108,9 +114,9 @@ if (isset($_SESSION['logged_in'])) {
                     <div class="col-10">
                         <form action="../php/send-review.php" method="POST">
                             <div class="form-group">
-                                <label for="feedback_section">Leave your feedback about our work
+                                <label for="feedback_section">What do you think of us? <span class="text-danger sm">(20 - 100 symbols)</span>
                                     <span class="small text-danger"> (max 100 symbols)</span></label>
-                                <textarea maxlength="100" name="review" style="resize:none" class="form-control w-50" id="feedback_section" rows="3" placeholder="What do you think of us?">
+                                <textarea maxlength="100" minlength="20" name="review" style="resize:none" class="form-control w-50" id="feedback_section" rows="3" placeholder="What do you think of us?">
                             </textarea>
                             </div>
                             <div>
@@ -147,20 +153,22 @@ if (isset($_SESSION['logged_in'])) {
             <div class="border border-primary w-50"><?php echo $user_review['review'] ?>
 
                 <div class="star_wrap" onmouseover="showText(this)" onmouseout="hideText(this)">
+                    <?php
+                    for ($i = 1; $i <= $user_review['grade']; $i++) {
+                        echo '<img src="images/star_icon.png" alt="star" style="height:50px">';
+                    }
+                    echo '</div></div>'; ?>
+                    <div class="blockquote text-success">
+                        Admin comment:
+                        <?php echo $user_review['admin_comment'] ?>
+
+                    </div>
             <?php
-            for ($i = 1; $i <= $user_review['grade']; $i++) {
-                echo '<img src="images/star_icon.png" alt="star" style="height:50px">';
-            }
-            echo '</div></div>';
         }
     } else {
         header('Location:?page=page-not-found');
     }
 
             ?>
-            <div class="blockquote text-success">
-                Admin comment:
-                <?php echo $user_review['admin_comment'] ?>
 
-            </div>
     </center>

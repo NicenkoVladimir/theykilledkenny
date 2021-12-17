@@ -26,6 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     header("Location: /?page=error");
                 } else {
                     $_SESSION['id'] = $user['id'];
+                    $_SESSION['full_name'] = $user['name'] . " " . $user['surname'];
                     $_SESSION['email'] = $email;
                     $_SESSION['active'] = $user['active'];
                     $_SESSION['status'] = $user['status_id'];
@@ -50,11 +51,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <form action="" method="post" class="col-md-4">
         <div class=" form-group">
             <label>Account email</label>
-            <input type="email" name="email" class="form-control form-control-lg">
+            <input type="email" name="email" class="form-control form-control-lg" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
         </div>
         <div class="form-group">
             <label>Password</label>
-            <input type="password" name="password" class="form-control form-control-lg">
+            <input type="password" name="password" class="form-control form-control-lg" required>
         </div>
         <input type="submit" value="Sign in your account" class="btn  btn-outline-primary mr-3">
         <a class="btn btn-warning" href="?page=register">Do not have account?</a>

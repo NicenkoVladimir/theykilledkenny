@@ -1,5 +1,7 @@
 <?php
 require_once './config.php';
+session_start();
+
 
 if (!empty($_POST['user_id'])) {
     $name = $_POST['name'];

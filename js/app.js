@@ -1,23 +1,9 @@
-function getSearch(elem, website) {
+function getSearch(elem, site_name) {
     if (event.keyCode == 13) {
-        var promise = new Promise((resolve, reject) => {
-            var request = new XMLHttpRequest();
-            request.open("GET", "http://google.com/search?q=site:" + website + " " + elem.value, true);
-            request.addEventListener("load", () => {
-                if (request.status < 400) {
-                    resolve(request.response);
-                }
-                else {
-                    reject(new Error("Request failed: " + request.statusText));
-                }
-            });
-            request.send();
-        });
-        promise.then((response) => {
-            var search_results = document.getElementById('search_results');
-            search_results.append(response);
-            console.log(response);
-        })
+        var url = "https://www.google.com/search?q=site:" + site_name + " " + elem.value;
+        const params = '';
+        var newWn = window.open(url, "search results", params);
+        // window.location.replace(url);
     }
 }
 

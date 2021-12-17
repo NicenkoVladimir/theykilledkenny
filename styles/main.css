@@ -34,6 +34,7 @@
 
 /* link classes */
 
+
 .menu a:hover {
     color: rgb(240, 225, 90);
     background-color: black;
@@ -183,8 +184,9 @@ input.search {
     margin-bottom: 0;
 }
 
-h1 {
-    font-family: 'CaveatBold';
+
+.h1_title {
+        font-family: 'CaveatBold';
     font-size: 3em;
     color: black;
     -webkit-text-stroke: .02em rgb(240, 225, 90);
@@ -193,4 +195,5 @@ h1 {
     ;
     -ms-text-stroke: .02em rgb(240, 225, 90);
     ;
+    
 }
